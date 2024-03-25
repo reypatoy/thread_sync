@@ -31,4 +31,7 @@ public interface UserRepository extends JpaRepository<User, String> {
                         @Param("firstName") String firstName,
                         @Param("email") String email
                     );
+
+    @Query("select u from User u where email = :email")
+    List<User> getByEmail(@Param("email") String email);
 }

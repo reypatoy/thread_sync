@@ -30,4 +30,26 @@ public class UserResponse {
         private String lastName;
         private String email;
     }
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class Login {
+        private boolean succeeded;
+        private String message;
+        private User user;
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class User {
+        private String id;
+        private String firstName;
+        private String lastName;
+        private String email;
+        private String token;
+    }
 }
