@@ -20,7 +20,6 @@ public class Controller {
     
     @PostMapping("")
     public ResponseEntity<Document> scrapper(@RequestBody SiteUrl siteUrl) {
-        System.out.print("niabot diri");
         return scrapperService.scrapper(siteUrl);
     }
     

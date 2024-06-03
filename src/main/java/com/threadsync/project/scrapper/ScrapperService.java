@@ -11,11 +11,9 @@ import io.jsonwebtoken.io.IOException;
 public class ScrapperService {
     
     public ResponseEntity<Document> scrapper(SiteUrl url) {
-        System.out.println("url: " + url.getSiteUrl());
         Document document;
         try{
             document = Jsoup.connect(url.getSiteUrl()).get();
-            System.out.println("document: " + document);
             return ResponseEntity.ok().body(document);
         }catch(IOException   e) {
             e.printStackTrace();
