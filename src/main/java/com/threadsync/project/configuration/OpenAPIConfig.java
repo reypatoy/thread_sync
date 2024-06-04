@@ -11,17 +11,24 @@ import io.swagger.v3.oas.models.servers.Server;
 
 @Configuration
 public class OpenAPIConfig {
+  
+    @Value("${openapi.dev-url}")
+    private String devUrl;
 
-  @Value("${openapi.dev-url}")
-  private String devUrl;
+  @Value("${openapi.prod-url}")
+  private String prodUrl;
 
   @Bean
   public OpenAPI myOpenAPI() {
     Server devServer = new Server();
     devServer.setUrl(devUrl);
     devServer.setDescription("Server URL in Development environment");
+   
+    Server prodServer = new Server();
+    prodServer.setUrl(prodUrl);
+    prodServer.setDescription("Server URL in production environment");
 
     return new OpenAPI()
-                .servers(List.of(devServer));
+                .servers(List.of(devServer, prodServer));
   }
 }
